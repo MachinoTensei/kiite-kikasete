@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'kiite/style.css' %}">
+	
+	<p>１番上の小話は、ブラウザの更新ボタンでランダムに切り替わります。</p>
+	{% for story in random_query_set %}
+	<div class="box11">
+		<p>[{{ story.created_at }}]</p>
+		<p>タイトル : <b>{{ story.title }}</b></p>
+		<p class = "tdata">{{ story.text }}...</p>
+		<div align="right"><a href = "{% url 'kiite:detail' story.id %}" class = "btn-gradient-radius">聞かせて</a></div>
+	</div>
+	{% endfor %}
+	
+	<p>ここからは最新の小話が掲載されております。</p>
+	{% for story in latest_story %}
+	<div class="box11">
+		<p>[{{ story.created_at }}]</p>
+		<p>タイトル : <b>{{ story.title }}</b></p>
+		<p class = "tdata">{{ story.text }}...</p>
+		<div align="right"><a href = "{% url 'kiite:detail' story.id %}" class = "btn-gradient-radius">聞かせて</a></div>
+	</div>
+	{% endfor %}
+	
+	
+	<head>
+	<style>
+	#content {
+		width: 100%;
+		table-layout: fixed;
+	}
+	.tdata {
+		height: 100%;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+	}
+	</style>
+	</head>
+
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% load bootstrap4 %}
+
+{% block content %}
+
+	<form action = "{% url 'kiite:create' %}" method = "post">
+		{% csrf_token %}
+		{% bootstrap_form storyForm layout='horizontal' %}
+		<button type = "submit" class = "btn btn-outline-primary">聞いてもらう</button>
+		<a href='{% url "kiite:home" %}' class='btn btn-outline-secondary'>やっぱりやめる</a>
+	</form>
+
+
+{% endblock %}
