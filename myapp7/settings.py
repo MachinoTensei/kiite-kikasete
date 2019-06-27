@@ -170,7 +170,7 @@ if "machinotensei" in hostname:
     ALLOWED_HOSTS = [] # よくわからんけど、これも大事らしい
 else:
     # 本番環境
-    DEBUG = False
+    DEBUG = True
     LOGGING = {
         'version': 1,
         'disable_existing_loggers': False,
